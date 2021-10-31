@@ -1,5 +1,5 @@
 # SpringBoard
-톰켓 웹 모듈 경로를 '/'
+톰켓 웹 모듈 경로 '/'
 
 JDK8버전용 ojdbc8.jar사용
 

@@ -26,10 +26,10 @@ public class DataSourceTests {
 	Logger logger = LoggerFactory.getLogger(JDBCTests.class);
 
 	@Setter(onMethod_={@Autowired})
-	private DataSource dataSource;
+	private DataSource dataSource; // hikariCP
 	
 	@Setter(onMethod_= {@Autowired})
-	private SqlSessionFactory sqlSessionFactory;
+	private SqlSessionFactory sqlSessionFactory; // Mybatis
 
 	@Test
 	public void testDataSourceConnection() {
@@ -41,7 +41,7 @@ public class DataSourceTests {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testMybatis() {
 		try(SqlSession session = sqlSessionFactory.openSession();
 			Connection con = session.getConnection();){

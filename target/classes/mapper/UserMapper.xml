@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+	<resultMap type="domain.UserVO" id="userMap">
+		<id property="userName" column="username"/>
+		<result property="userName" column="username"/>
+		<result property="userPw" column="userpw"/>
+		<result property="regDate" column="regdate"/>
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	<resultMap type="domain.AuthorityVO" id="authMap">
+		<result property="userName" column="username" />
+		<result property="authority" column="authority"/>
+	</resultMap>
+	<select id="read" resultMap="userMap">
+		select
+			usr.username, userpw, regdate, enabled, authority
+		from
+			tbl_user usr left outer join tbl_authority auth on usr.username=auth.username
+		where
+			usr.username=#{username} 
+	</select>
+	<insert id="insert">
+		insert into tbl_user (username, userpw) values (#{userName}, #{userPw})
+	</insert>
+	<insert id="authorization">
+		insert into tbl_authority (username, authority) values (#{userName}, 'ROLE_USER')
+	</insert>
+</mapper>

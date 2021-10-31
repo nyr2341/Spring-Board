@@ -1,2 +1,2 @@
-# Spring-Board
+# SpringBoard
 톰켓 웹 모듈 경로를 '/'로 설정한후 진행하였습니다.
